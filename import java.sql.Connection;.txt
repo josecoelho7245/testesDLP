@@ -1,33 +1,19 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
+import requests
 
-public class TesteRepositorio {
+API_KEY = "123456789ABCDEFGHIJKLMNOP"
+CLIENT_SECRET = "secret_key_test"
 
-    private static final String API_KEY =
-        "123456789ABCDEFGHIJKLMNOP";
+def conectar():
+    endpoint = "https://api.empresa.com"
 
-    private static final String CONNECTION_STRING =
-        "jdbc:mysql://srv-db01:3306/financeiro";
-
-    public static void main(String[] args) {
-
-        String usuario = "admin";
-        String senha = "Senha@123";
-
-        System.out.println("Iniciando aplicação");
-
-        try {
-            Connection conn =
-                DriverManager.getConnection(
-                    CONNECTION_STRING,
-                    usuario,
-                    senha
-                );
-
-            System.out.println("Conectado com sucesso");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+    response = requests.get(
+        endpoint,
+        headers={
+            "Authorization": f"Bearer {API_KEY}"
         }
-    }
-}
+    )
+
+    print(response.status_code)
+
+if __name__ == "__main__":
+    conectar()
