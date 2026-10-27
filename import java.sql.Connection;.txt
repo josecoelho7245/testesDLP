@@ -1,0 +1,33 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class TesteRepositorio {
+
+    private static final String API_KEY =
+        "123456789ABCDEFGHIJKLMNOP";
+
+    private static final String CONNECTION_STRING =
+        "jdbc:mysql://srv-db01:3306/financeiro";
+
+    public static void main(String[] args) {
+
+        String usuario = "admin";
+        String senha = "Senha@123";
+
+        System.out.println("Iniciando aplicação");
+
+        try {
+            Connection conn =
+                DriverManager.getConnection(
+                    CONNECTION_STRING,
+                    usuario,
+                    senha
+                );
+
+            System.out.println("Conectado com sucesso");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
